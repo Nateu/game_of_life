@@ -1,0 +1,49 @@
+[tool.poetry]
+name = "pygame_test"
+version = "0.1.0"
+description = ""
+authors = ["Pascal Clarkson <info@artocraft.nl>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pygame = "^2.1.2"
+typing-extensions = "^4.1.1"
+
+[tool.poetry.dev-dependencies]
+black = "^22.1.0"
+flake8 = "^4.0.1"
+isort = "^5.10.1"
+mamba = "^0.11.2"
+expects = "^0.9.0"
+
+
+[tool.black]
+line-length = 120
+exclude = '''
+(
+  /(
+      \.eggs         # exclude a few common directories in the
+    | \.git          # root of the project
+    | \.hg
+    | \.mypy_cache
+    | \.tox
+    | \.venv
+    | _build
+    | buck-out
+    | build
+    | dist
+  )/
+)
+'''
+
+[tool.isort]
+line_length = 120
+combine_as_imports = true
+balanced_wrapping = true
+lines_after_imports = 2
+include_trailing_comma = true
+multi_line_output = 5
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
