@@ -187,14 +187,14 @@ python-versions = ">=3.7"
 name = "typing-extensions"
 version = "4.1.1"
 description = "Backported and Experimental Type Hints for Python 3.6+"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.6"
 
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "4a68b8ce18a95d1db70c023d72297182d4abe726e55173d5245989f90ec74f5b"
+content-hash = "d04e5edf0dd641a6dc4b217dae161ed322e2a9256dab085405733b50afc01bdf"
 
 [metadata.files]
 args = [

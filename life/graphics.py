@@ -16,6 +16,8 @@ class Graphics:
     def draw_cell(self, x: int, y: int, width: int, height: int, colour: tuple[int, int, int]) -> None:
         rect = pygame.Rect(x, y, width, height)
         pygame.draw.rect(self.screen, colour, rect)
+
+    def update(self) -> None:
         pygame.display.update()
 
     def has_quit(self) -> bool:

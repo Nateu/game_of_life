@@ -1,20 +1,20 @@
 [tool.poetry]
-name = "pygame_test"
+name = "game of life"
 version = "0.1.0"
-description = ""
+description = "Just another Python game of life implementation."
 authors = ["Pascal Clarkson <info@artocraft.nl>"]
 
 [tool.poetry.dependencies]
 python = "^3.10"
 pygame = "^2.1.2"
-typing-extensions = "^4.1.1"
 
 [tool.poetry.dev-dependencies]
 black = "^22.1.0"
+expects = "^0.9.0"
 flake8 = "^4.0.1"
 isort = "^5.10.1"
 mamba = "^0.11.2"
-expects = "^0.9.0"
+typing-extensions = "^4.1.1"
 
 
 [tool.black]
