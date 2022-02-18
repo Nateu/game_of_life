@@ -1,7 +1,6 @@
-import sys
 from unittest.mock import MagicMock
 
-from mamba import _context, before, context, description, it
+from mamba import before, context, description, it
 
 from life.gol import Game
 from life.graphics import Graphics
