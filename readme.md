@@ -47,7 +47,7 @@ Follow this task list.
 ### Initial state for the game
 This will be used in step 6
 
-![should look like this](https://en.wikipedia.org/wiki/File:Gospers_glider_gun.gif)
+![should look like this](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life#/media/File:Gospers_glider_gun.gif)
 ```python
 initial_state = [(12, 6),(12, 7),
 (13, 6),(13, 7),
