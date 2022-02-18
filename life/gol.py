@@ -1,7 +1,7 @@
 from sys import exit
 from typing import List
 
-import pygame
+from life.graphics import Graphics
 
 
 class Cell:
@@ -20,27 +20,23 @@ class Cell:
 
 
 class Game:
-    def __init__(self, width: int, height: int, block_size: int):
-        pygame.init()
+    def __init__(self, graphics: Graphics, width: int, height: int, block_size: int):
         self.BLACK = 0, 0, 0
         self.GREEN = 0, 255, 0
         self.AOC_PURPLE = 110, 70, 139
         self.AOC_OCEAN = 20, 178, 173
+        self.graphics = graphics
         self._horizontal_block_count = width
         self._vertical_block_count = height
         self._block_size = block_size
         self._width = width * self._block_size
         self._height = height * self._block_size
         self._size = self._width, self._height
-        self._screen = self.setup_screen()
+        self.graphics.init_screen(self._size)
+        self.graphics.fill_screen(self.BLACK)
         self._cells: List[List[Cell]] = self.create_grid()
         self.x_coordinate_range = range(0, self._horizontal_block_count - 1)
         self.y_coordinate_range = range(0, self._vertical_block_count - 1)
-
-    def setup_screen(self):
-        screen = pygame.display.set_mode(size=self._size)
-        screen.fill(self.BLACK)
-        return screen
 
     def create_grid(self) -> List[List[Cell]]:
         return [[Cell() for y in range(0, self._vertical_block_count)] for x in range(0, self._horizontal_block_count)]
@@ -50,18 +46,15 @@ class Game:
             self._cells[alive_cell_x][alive_cell_y].reproduce()
 
     def draw_grid(self) -> None:
-        self._screen.fill(self.BLACK)
+        self.graphics.fill_screen(self.BLACK)
         [
             [
-                pygame.draw.rect(self._screen, self.GREEN, self.make_cell(x, y))
+                self.graphics.draw_cell(x=x * self._block_size, y=y * self._block_size, width=self._block_size, height=self._block_size, colour=self.GREEN)
                 for x in self.x_coordinate_range
                 if self._cells[x][y].is_alive
             ]
             for y in self.y_coordinate_range
         ]
-
-    def make_cell(self, x, y):
-        return pygame.Rect(x * self._block_size, y * self._block_size, self._block_size, self._block_size)
 
     def get_neighbour_coordinates(self, x, y) -> List[tuple[int, int]]:
         coordinates = [
@@ -100,17 +93,17 @@ class Game:
 
     def game_loop(self) -> None:
         while True:
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    exit()
+            if self.graphics.has_quit():
+                exit()
             self.draw_grid()
-            pygame.display.update()
+            self.graphics.update()
             self.evaluate_cells()
             self.update_cell_state()
 
 
 if __name__ == "__main__":
-    game = Game(width=160, height=120, block_size=6)
+    graphics = Graphics()
+    game = Game(graphics=graphics, width=160, height=120, block_size=6)
     game.set_initial_state(
         [
             (12, 6),
