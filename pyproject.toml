@@ -8,6 +8,7 @@ authors = ["Pascal Clarkson <info@artocraft.nl>"]
 python = "^3.10"
 pygame = "^2.1.2"
 typing-extensions = "^4.1.1"
+mamba = "^0.11.2"
 
 [tool.poetry.dev-dependencies]
 black = "^22.1.0"
