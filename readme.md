@@ -46,8 +46,8 @@ Follow this task list.
 
 ### Initial state for the game
 This will be used in step 6
-
-![should look like this](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life#/media/File:Gospers_glider_gun.gif)
+![should look like this](Gospers_glider_gun.gif)  
+It should result in something like this
 ```python
 initial_state = [(12, 6),(12, 7),
 (13, 6),(13, 7),
@@ -90,6 +90,8 @@ class Graphics:
     def draw_cell(self, x: int, y: int, width: int, height: int, colour: tuple[int, int, int]) -> None:
         rect = pygame.Rect(x, y, width, height)
         pygame.draw.rect(self.screen, colour, rect)
+
+    def update(self) -> None:
         pygame.display.update()
 
     def has_quit(self) -> bool:
